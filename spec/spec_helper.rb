@@ -6,4 +6,6 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
 
   config.order = 'default'
+
+  config.color = true
 end
