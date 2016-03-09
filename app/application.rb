@@ -1,7 +1,5 @@
 class Application
-
-	@@items = [Item.new("apple", 3.42)]
-
+	
 	def call(env)
 		resp = Rack::Response.new
 		req = Rack::Request.new(env)
