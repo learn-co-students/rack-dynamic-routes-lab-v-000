@@ -1,6 +1,5 @@
 require 'pry'
 class Application
-  @@item = [Item.new("Food", 5)]
   def call(env)
 
     resp = Rack::Response.new
