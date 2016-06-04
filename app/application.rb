@@ -1,6 +1,6 @@
 class Application
 
-  attr_accessor :name, :price
+
 
     @@items = []
 
@@ -17,10 +17,10 @@ class Application
 
 
       item_name = req.path.split("/items/").last
-        if @@items.include?(item_name)
-      i_name = @@items.find{|i| i.name == item_name}
+        #if @@items.include?(item_name)
+    if item = @@items.find{|i| i.name == item_name}
 
-      resp.write i_name.price
+      resp.write item.price
     else
       resp.write "Item not found"
       resp.status = 400
