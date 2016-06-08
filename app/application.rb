@@ -6,10 +6,10 @@ class Application
 def call(env)
   resp = Rack::Response.new
   req = Rack::Request.new(env)
-  if req.path != "/items/"
+  if !req.path.match(/items/)
     resp.write "Route not found"
     resp.status = 404
-  elsif req.path== "/items/" && @@items.find{|x| x.name == (req.path.split("/items/").last)}
+  elsif req.path.match(/items/) && @@items.find{|x| x.name == (req.path.split("/items/").last)}
     item = req.path.split("/items/").last
     item_price = @@items.find{|x| x.name == item}
     resp.write item_price.price
@@ -25,4 +25,3 @@ end
 
 
 end
-#&& @@items.find{|x| x.name == (req.path.split("/items/").last)}
