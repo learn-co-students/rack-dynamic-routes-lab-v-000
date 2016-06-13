@@ -8,7 +8,7 @@ class Application
 
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-      if item = @@items.find {|i| i.name == item_name}
+      if item = @@items.find {|i| i.name == item_name} #if this isn't true, the return value is `nil` -- or a falsey value
         resp.write item.price
       else
         resp.status = 400
@@ -20,5 +20,5 @@ class Application
     end
     resp.finish
   end 
-  
+
 end
