@@ -3,3 +3,7 @@ Bundler.require
 
 require_relative "../app/item.rb"
 require_relative '../app/application'
+
+
+require "pry"
+#Pry.start
