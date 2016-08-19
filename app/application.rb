@@ -1,6 +1,6 @@
 class Application
 
-  @@items = []
+  @@items = [Item.new("Music_Album", 9), Item.new("Shirt", 20)]
 
   def call(env)
     resp = Rack::Response.new
@@ -9,10 +9,10 @@ class Application
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
       if item = @@items.find{|item| item.name == item_name}
-      resp.write item.price
+      resp.write "#{item_name}s are $#{item.price}."
       else
         resp.status = 400
-        resp.write "Item not found"
+        resp.write "Sorry no #{item_name}. Item not found"
       end
     else
       resp.status = 404
