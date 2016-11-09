@@ -10,10 +10,10 @@ class Application
 
     if req.path.include?("/items/")
       item_to_add = req.path.split("/items/").last
-        i = @@items.select {|i| i.name == item_to_add}
+        i = @@items.find {|i| i.name == item_to_add}
 
-        if !i.empty?
-          resp.write(i)
+        if i
+          resp.write(i.price)
         else
           resp.write("Item not found")
           resp.status = 400
