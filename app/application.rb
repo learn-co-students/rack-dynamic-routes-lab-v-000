@@ -20,7 +20,6 @@ class Application
       response.status = 404
       response.write "Route not found"
     end
-
     response.finish
   end
 
