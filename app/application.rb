@@ -7,10 +7,9 @@ class Application
 
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-      item = @@items.find{|item| item.name == item_name}
-      if item
+      if item = @@items.find{|item| item.name == item_name}
         resp.write item.price
-        resp.status = 200 # By default, Rack sets a status code of 200 so this line isn't necessary
+        # By default, Rack sets a status code of 200 so resp.status = 200 isn't necessary
       else
         resp.write "Item not found"
         resp.status = 400
