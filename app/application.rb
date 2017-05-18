@@ -7,7 +7,7 @@ class Application
     item_name = req.path.split("/items/").last
     item = Item.items.find{|item| item.name == item_name}
     
-    if item
+    if req.path.match("/items/") && item
       resp.write "#{item.name}: $#{item.price}."
     elsif req.path.match("/items/") 
       resp.write "Item not found"
