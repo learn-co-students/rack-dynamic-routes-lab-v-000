@@ -1,3 +1,4 @@
+#require_relative './application.rb'
 class Item
   attr_accessor :name, :price
 
