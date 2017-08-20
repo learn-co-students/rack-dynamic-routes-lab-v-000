@@ -10,18 +10,19 @@ class Application
 
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-
       item = @@items.find{|i| i.name == item_name}
-      if item
-      resp.write item.price
-      else
-        resp.status = 400
-        resp.write "Item not found"
-      end
+      
+      item ? resp.write(item.price) : set_response(resp, 400, "Item not found")
     else
-      resp.status = 404
-      resp.write "Route not found"
+      set_response(resp, 404, "Route not found")
     end
     resp.finish
+  end
+
+  private
+
+  def set_response(resp, status_code, error_message)
+    resp.status = status_code
+    resp.write error_message
   end
 end
