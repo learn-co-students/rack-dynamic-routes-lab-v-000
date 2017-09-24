@@ -3,20 +3,20 @@ class Application
   @@items = []
 
   def call(env)
-    @req  = Rack::Request.new(env)
-    @resp = Rack::Response.new
+    req  = Rack::Request.new(env)
+    resp = Rack::Response.new
 
-    if @req.path.match(/items/)
-      item_req = @req.path.split(/\//).last
+    if req.path.match(/items/)
+      item_req = req.path.split(/\//).last
 
-      item_req = @@items.find(-> {"#{@resp.status = 400}, #{@resp.write 'Item not found'}"}) do |obj|
-    @resp.write obj.name == item_req ? "#{obj.price} " : nil
+      item_req = @@items.find(-> {"#{resp.status = 400}, #{resp.write 'Item not found'}"}) do |obj|
+        resp.write obj.name == item_req ? "#{obj.price} " : nil
       end
     else
-      @resp.status = 404
-      @resp.write("Route not found")
+      resp.status = 404
+      resp.write("Route not found")
     end
-    @resp.finish
+    resp.finish
    end
 
 end
