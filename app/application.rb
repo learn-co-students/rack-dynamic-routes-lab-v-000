@@ -9,7 +9,7 @@ class Application
     if req.path.match(/items/)
       item_req = req.path.split(/\//).last
 
-      item_req = @@items.find(-> {"#{resp.status = 400}, #{resp.write 'Item not found'}"}) do |obj|
+      @@items.find(-> {"#{resp.status = 400}, #{resp.write 'Item not found'}"}) do |obj|
         resp.write obj.name == item_req ? "#{obj.price} " : nil
       end
     else
