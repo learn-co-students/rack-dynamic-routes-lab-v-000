@@ -8,8 +8,8 @@ class Application
 
     if req.path.match(/items/)
 
-      item_name = req.path.split("/items/").last
-      item = @@items.find{ |item| item.name === item_name }
+      search_item = req.path.split("/items/").last
+      item = @@items.find{ |item| item.name === search_item }
 
       if @@items.include?(item)
         resp.write "#{item.price}"
