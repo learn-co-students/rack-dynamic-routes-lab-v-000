@@ -9,13 +9,15 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.match(/items/)
-      binding.pry
-      the_item = req.path.split("/items/").last
+      # binding.pry
+      the_item_name = req.path.split("/items/").last
 
-      if @@items.include?(the_item)
-        return the_item.price
+      if item_obj = @@items.find {|i| i.name == the_item_name}
+        # binding.pry
+        resp.write item_obj.price
       else
-        return "Item not found"
+        resp.write "Item not found"
+        resp.status = 400
       end
     else
       resp.write "Route not found"
