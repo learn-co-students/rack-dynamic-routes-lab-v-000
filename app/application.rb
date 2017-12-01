@@ -7,9 +7,10 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.match(/items/)
-      if @@items.any?{|i| i.name == req.path.split("/").last}
+      item_name = req.path.split("/").last
+      if @@items.any?{|i| i.name == item_name}
         item = @@items.select do |i|
-          i.name == req.path.split("/").last
+          i.name == item_name
         end
         resp.write "#{item.first.price.to_s}"
         resp.status = 200
