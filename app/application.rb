@@ -10,8 +10,7 @@ class Application
 
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-      item = @@items.find {|s| s.name == item_name}
-      if @@items.map(&:name).include?(item_name)
+      if item = @@items.find {|s| s.name == item_name}
         resp.write "You selected #{item.name} - price: #{item.price}"
       else
         resp.write "Item not found"
