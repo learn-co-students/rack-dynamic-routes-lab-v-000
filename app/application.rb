@@ -10,10 +10,11 @@ class Application
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last#turn /items/<Item.name> into <Item.name>
       if @@items.include?(item_name)
-        item = @@items.find{|s| i.name == item_name}
+        item = @@items.find{|i| i.name == item_name}
         req.return "#{item.price}"
         #item = @@items.find{|s| i.name == item_name}
       else
+        resp.write "Item not found"
         resp.status = 400
       end
 
