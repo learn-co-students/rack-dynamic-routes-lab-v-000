@@ -3,7 +3,7 @@ class Application
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
-    if req.path.match(/items/)
+    if req.path.match(/items/) #not == like the preceding lesson of course, this has stuff after it
       name = req.path.split("/items/").last
 
         if @@items.find{|element| element.name == name}
