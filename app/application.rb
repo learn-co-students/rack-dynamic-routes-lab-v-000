@@ -4,7 +4,7 @@ class Application
    def call(env)
       resp = Rack::Response.new
       req = Rack::Request.new(env)
-      if req.path == "/items/"
+      if req.path.match(/items/)
          item_title = req.path.split("/items").last
 
          if @@items.any?{|i| i.title == item_title}
