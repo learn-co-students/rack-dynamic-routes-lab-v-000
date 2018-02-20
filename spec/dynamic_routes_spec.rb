@@ -10,6 +10,7 @@ describe "Shopping Cart Rack App" do
     expect(last_response.body).to include("Route not found")
     expect(last_response.status).to be(404)
   end
+
   describe "/items" do
 
     it 'Returns item price if it is in @@item' do
