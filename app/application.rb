@@ -1,8 +1,6 @@
 require 'pry'
 class Application
 
-  #@@items = []
-
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
@@ -14,9 +12,13 @@ class Application
       req.path.match("/items/")
       item_name = req.path.split("/items/").last
       item = @@items.find{|i| i.name == item_name}
-      resp.write "#{item.price}"
-      #[Item.new("Figs",3.42),Item.new("Pears",0.99)])
+      if item == nil
+        resp.status = 400
+        resp.write "Item not found"
+      else
+        resp.write "#{item.price}"
+      end
     end #if statement
-
+    resp.finish
   end #call method
 end

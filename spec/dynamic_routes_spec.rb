@@ -1,5 +1,5 @@
 require_relative './spec_helper'
-
+require 'pry'
 describe "Shopping Cart Rack App" do
   def app()
     Application.new
