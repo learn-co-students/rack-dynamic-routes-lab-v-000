@@ -9,10 +9,9 @@ class Application
     if req.path.match(/items/)
 
       item_name = req.path.split("/items/").last
-
         # i in this case is not for index but for item
         item = @@items.find{|i| i.name == item_name}
-        
+
       if item
         # item.price   it look for the price afterwards.
         resp.write "#{item.price}"
@@ -22,7 +21,7 @@ class Application
       end
 
     else
-      resp.write "Route not found"
+      resp.write "Route not found"xs
       resp.status = 404
     end
     resp.finish
