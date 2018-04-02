@@ -1,6 +1,7 @@
 require 'pry'
 class Application
   # Item is a method that is already giving to use...
+   # it is possible to have an If statement with another if statement.
 
   def call(env)
     resp = Rack::Response.new
