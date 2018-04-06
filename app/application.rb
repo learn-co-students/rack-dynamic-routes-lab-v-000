@@ -5,12 +5,12 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.match(/items/)
-
       # search_item = req.params["item"]
       item_name = req.path.split("/items/").last
-
+      # item = @@items.find{|i| i.name == item_name}
       # binding.pry
 
+      # if item !=nil
       if item = @@items.find{|i| i.name == item_name}
         resp.write item.price
 
