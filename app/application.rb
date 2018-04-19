@@ -1,14 +1,29 @@
-class Application
-  def call(env)
-    resp = Rack::Response.new
-    req = Rack::Request.new(env)
+require 'pry'
 
-    if req.path.match(/items/)
-      #if item name is found in @@items, return item price
-      #if not, resp.status = 400
+class Application
+  @@items = []
+
+  def call(env)
+    @resp = Rack::Response.new
+    @req = Rack::Request.new(env)
+    if @req.path.match(/items/)
+      item_search
     else
-      resp.write "Route not found"
-      resp.status = 404
+      @resp.write "Route not found"
+      @resp.status = 404
+    end
+    @resp.finish
+  end
+
+  def item_search
+    item_name = @req.path.split("/items/").last
+    item = @@items.detect {|x| x.name == item_name}
+    if item != nil
+      @resp.write item.price
+      @resp.status = 200
+    else
+      @resp.write "Item not found"
+      @resp.status = 400
     end
   end
 
