@@ -2,16 +2,16 @@ require 'pry'
 
 class Application
   
-  attr_accessor :item
+  @@items = []
   
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
-    binding.pry
     if req.path.match(/items/)
-      item_name = req.params["Item Name"]
-      if @@items.include?(item_name)
-        resp.write "#{item_name.price}" 
+      item_name = req.path.split("/items/").last
+      #binding.pry
+      if item = @@items.find{|i| i.name == item_name}
+        resp.write "#{item.price}" 
       else
         resp.write "Item not found"
         resp.status = 400 
