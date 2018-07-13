@@ -8,8 +8,7 @@ class Application
 
     if req.path.match(/items/)
       selection = req.path.split("/items/").last
-      item = @@items.find {|i| i.name == selection}
-      if item
+      if item = @@items.find {|i| i.name == selection}
         resp.write item.price
         resp.status = 200
       else
