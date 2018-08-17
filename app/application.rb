@@ -1,20 +1,21 @@
 class Application 
-  
+  @@items = [Item.new("disc",3.42),Item.new("paper",4.89)]
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
  
     if req.path.match(/items/)
-      search_term = req.params["Item_name"]
-      @@items.each do |item|
-        resp.write item.price
+      
+      item_name = req.path.split("/items/").last # Need to get the item_name from the path 
+          
+      if @@items.find{|s| s.name == item_name}
+      resp.write = item.price
+        
+      else 
+        resp.write "Item not found"
+        resp.status = 400
       end 
-      resp.status = 200
     else 
-      resp.write "Item not found"
-      resp.status = 400
-    end 
-    if !req.path.match(/items/)
       resp.status = 404
       resp.write "Route not found"
     end 
