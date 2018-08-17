@@ -1,5 +1,5 @@
 class Application 
-  @@items = [Item.new("disc",3.42),Item.new("paper",4.89)]
+  # @@items = [Item.new("disc",3.42),Item.new("paper",4.89)]
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
@@ -10,6 +10,7 @@ class Application
           
       if @@items.find{|s| s.name == item_name}
       resp.write = item.price
+      resp.status = 200
         
       else 
         resp.write "Item not found"
