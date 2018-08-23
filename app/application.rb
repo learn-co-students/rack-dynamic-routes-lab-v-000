@@ -21,10 +21,5 @@ class Application
         resp.finish
     end
 
-    # def handle_search(search_term)
-    #     if !@@items.include?(search_term)
-    #       return "Item not found"
-    #       esp.status = 400
-    #     end
-    # end
+    
 end 
