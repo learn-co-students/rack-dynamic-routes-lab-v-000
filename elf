@@ -1,0 +1,30 @@
+
+[1mFrom:[0m /home/JustineGB/rack-dynamic-routes-lab-v-000/app/application.rb @ line 12 Application#call:
+
+     [1;34m6[0m: [32mdef[0m [1;34mcall[0m(env)
+     [1;34m7[0m:   resp = [1;34;4mRack[0m::[1;34;4mResponse[0m.new
+     [1;34m8[0m:   req = [1;34;4mRack[0m::[1;34;4mRequest[0m.new(env)
+     [1;34m9[0m: 
+    [1;34m10[0m:   [32mif[0m req.path.match([35m[1;35m/[0m[35mitems[1;35m/[0m[35m[0m) [1;34m#if is is a good path[0m
+    [1;34m11[0m:       [1;34m#if @@items.include?(item)[0m
+ => [1;34m12[0m:       binding.pry
+    [1;34m13[0m:         item_price = req.path.split([31m[1;31m"[0m[31m/items/[1;31m"[0m[31m[0m).last
+    [1;34m14[0m:         item = [36m@@items[0m.find {|i| i.price == item.price}
+    [1;34m15[0m:         resp.write item.price
+    [1;34m16[0m:   [1;34m#  req.path.match(/items/)[0m
+    [1;34m17[0m:   [1;34m#  item = req.params["item"][0m
+    [1;34m18[0m:       [1;34m#  if @@items.include?(item) #if item is in the array, return the price[0m
+    [1;34m19[0m:         [1;34m#  @@cart << item[0m
+    [1;34m20[0m:         [1;34m#  resp.write "#{item.price}\n" #then return the item price[0m
+    [1;34m21[0m:       [32melsif[0m [1;34m#if not in the array, give error message[0m
+    [1;34m22[0m:           resp.write [31m[1;31m"[0m[31mItem not there[1;31m"[0m[31m[0m
+    [1;34m23[0m:           resp.status = [1;34m400[0m
+    [1;34m24[0m:         [1;34m#end[0m
+    [1;34m25[0m:   [32melse[0m [1;34m#else, the route is bad and return 404[0m
+    [1;34m26[0m:     resp.write [31m[1;31m"[0m[31mRoute not found[1;31m"[0m[31m[0m [1;34m#else it is not a[0m
+    [1;34m27[0m:     resp.status = [1;34m404[0m
+    [1;34m28[0m:   [32mend[0m
+    [1;34m29[0m: 
+    [1;34m30[0m:   resp.finish
+    [1;34m31[0m: [32mend[0m
+
