@@ -5,10 +5,13 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
  
- binding.pry
     if req.path.include?("/items/")
       item_name = req.path.split("/").last
-      #resp.write "#{name.price}"   
+  
+      item = Item.all.detect do |item| 
+        item.name == item_name 
+      end
+      resp.write "#{item.price}"   
     else
       resp.write "Route not found"
       resp.status = 404
