@@ -13,7 +13,7 @@ class Application
 
     if request.path.match(/items/)
       if @@items.include?(item)
-        response.write item.price
+        response.write "#{item.price}"
       else
         response.write "Item not found."
         response.status = 400
