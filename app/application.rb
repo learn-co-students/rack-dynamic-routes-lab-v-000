@@ -1,5 +1,5 @@
 class Application 
-  @@items = [] # Each item has a name and a price
+  @@items = [Item.new("apples", 2.55), Item.new("pears", 5.99)] # Each item has a name and a price
   
   def call(env) 
     req = Rack::Request.new(env)
