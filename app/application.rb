@@ -10,9 +10,10 @@ class Application
       found_item = @@items.detect {|item| item.name == requested_item}
       
       if found_item # Item object or nil
-        #TODO: finish this part.
+        resp.write found_item.price
       else 
-        #TODO: finish this part.
+        resp.status = 400
+        resp.write "Item not found"
       end
     else 
       resp.write "Route not found"
