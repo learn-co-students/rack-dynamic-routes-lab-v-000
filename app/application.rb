@@ -1,6 +1,6 @@
 class Application
-  #@@items = []
-  @@items = [Item.new("Figs",3.42),Item.new("Pears",0.99)] # For web testing purposes
+  @@items = []
+  #@@items = [Item.new("Figs",3.42),Item.new("Pears",0.99)] # For web testing purposes
 
   def call(env)
     resp = Rack::Response.new # Instance of the HTTP response
