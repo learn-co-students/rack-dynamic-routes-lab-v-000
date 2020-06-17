@@ -1,0 +1,464 @@
+Last login: Mon Jul 25 19:46:45 on ttys001
+/tmp/tmp_open.sh ; exit;
+[05:41:21] (master) ~
+// ♥ /tmp/tmp_open.sh ; exit;
+Looking for lesson...
+Forking lesson...
+Cloning lesson...
+Bundling...
+Opening lesson...
+Done.
+[05:41:25] (master) rack-dynamic-routes-lab-v-000
+// ♥ learn
+
+Shopping Cart Rack App
+  Returns 404 for a bad route (FAILED - 1)
+  /items
+    Returns item price if it is in @@item (FAILED - 2)
+    Returns an error and 400 if the item is not there (FAILED - 3)
+
+Failures:
+
+  1) Shopping Cart Rack App Returns 404 for a bad route
+     Failure/Error: Application.new
+     NameError:
+       uninitialized constant Application
+     # ./spec/dynamic_routes_spec.rb:5:in `app'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test/methods.rb:31:in `build_rack_mock_session'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test/methods.rb:27:in `rack_mock_session'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test/methods.rb:42:in `build_rack_test_session'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test/methods.rb:38:in `rack_test_session'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test/methods.rb:46:in `current_session'
+     # ./spec/dynamic_routes_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: Application.class_variable_set(:@@items, [Item.new("Figs",3.42),Item.new("Pears",0.99)])
+     NameError:
+       uninitialized constant Application
+     # ./spec/dynamic_routes_spec.rb:16:in `block (3 levels) in <top (required)>'
+
+  3) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: Application.class_variable_set(:@@items, [Item.new("Figs",3.42),Item.new("Pears",0.99)])
+     NameError:
+       uninitialized constant Application
+     # ./spec/dynamic_routes_spec.rb:23:in `block (3 levels) in <top (required)>'
+
+Finished in 0.0014 seconds (files took 0.09453 seconds to load)
+3 examples, 3 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:8 # Shopping Cart Rack App Returns 404 for a bad route
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[05:54:09] (master) rack-dynamic-routes-lab-v-000
+// ♥ rspec
+.FF
+
+Failures:
+
+  1) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: expect(last_response.body).to include("3.42")
+       expected "Route not found" to include "3.42"
+     # ./spec/dynamic_routes_spec.rb:18:in `block (3 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: expect(last_response.body).to include("Item not found")
+       expected "Route not found" to include "Item not found"
+     # ./spec/dynamic_routes_spec.rb:25:in `block (3 levels) in <top (required)>'
+
+Finished in 0.02392 seconds (files took 0.08386 seconds to load)
+3 examples, 2 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[05:56:57] (master) rack-dynamic-routes-lab-v-000
+// ♥ rspec
+.FF
+
+Failures:
+
+  1) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: expect(last_response.body).to include("3.42")
+       expected "Route not found" to include "3.42"
+     # ./spec/dynamic_routes_spec.rb:18:in `block (3 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: expect(last_response.body).to include("Item not found")
+       expected "Route not found" to include "Item not found"
+     # ./spec/dynamic_routes_spec.rb:25:in `block (3 levels) in <top (required)>'
+
+Finished in 0.02461 seconds (files took 0.08639 seconds to load)
+3 examples, 2 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[05:57:54] (master) rack-dynamic-routes-lab-v-000
+// ♥ rspec
+/Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/app/application.rb:19: warning: else without rescue is useless
+FFF
+
+Failures:
+
+  1) Shopping Cart Rack App Returns 404 for a bad route
+     Failure/Error: get '/testing'
+     NameError:
+       uninitialized class variable @@item in Application
+     # ./app/application.rb:6:in `call'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/mock_session.rb:30:in `request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:244:in `process_request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:58:in `get'
+     # ./spec/dynamic_routes_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: get '/items/Figs'
+     NameError:
+       uninitialized class variable @@item in Application
+     # ./app/application.rb:6:in `call'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/mock_session.rb:30:in `request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:244:in `process_request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:58:in `get'
+     # ./spec/dynamic_routes_spec.rb:17:in `block (3 levels) in <top (required)>'
+
+  3) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: get '/items/Apples'
+     NameError:
+       uninitialized class variable @@item in Application
+     # ./app/application.rb:6:in `call'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/mock_session.rb:30:in `request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:244:in `process_request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:58:in `get'
+     # ./spec/dynamic_routes_spec.rb:24:in `block (3 levels) in <top (required)>'
+
+Finished in 0.01368 seconds (files took 0.0973 seconds to load)
+3 examples, 3 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:8 # Shopping Cart Rack App Returns 404 for a bad route
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[06:05:00] (master) rack-dynamic-routes-lab-v-000
+// ♥ rspec
+/Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/app/application.rb:19: warning: else without rescue is useless
+FFF
+
+Failures:
+
+  1) Shopping Cart Rack App Returns 404 for a bad route
+     Failure/Error: get '/testing'
+     NameError:
+       uninitialized class variable @@items in Application
+     # ./app/application.rb:6:in `call'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/mock_session.rb:30:in `request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:244:in `process_request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:58:in `get'
+     # ./spec/dynamic_routes_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: expect(last_response.status).to be(200)
+       
+       expected #<Fixnum:401> => 200
+            got #<Fixnum:809> => 404
+       
+       Compared using equal?, which compares object identity,
+       but expected and actual are not the same object. Use
+       `expect(actual).to eq(expected)` if you don't care about
+       object identity in this example.
+     # ./spec/dynamic_routes_spec.rb:19:in `block (3 levels) in <top (required)>'
+
+  3) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: expect(last_response.body).to include("Item not found")
+       expected "Figs - 3.42\nPears - 0.99\nRoute not found" to include "Item not found"
+       Diff:
+       @@ -1,2 +1,4 @@
+       -Item not found
+       +Figs - 3.42
+       +Pears - 0.99
+       +Route not found
+     # ./spec/dynamic_routes_spec.rb:25:in `block (3 levels) in <top (required)>'
+
+Finished in 0.02901 seconds (files took 0.08897 seconds to load)
+3 examples, 3 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:8 # Shopping Cart Rack App Returns 404 for a bad route
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[06:05:13] (master) rack-dynamic-routes-lab-v-000
+// ♥ rspec
+FFF
+
+Failures:
+
+  1) Shopping Cart Rack App Returns 404 for a bad route
+     Failure/Error: get '/testing'
+     NameError:
+       uninitialized class variable @@items in Application
+     # ./app/application.rb:6:in `call'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/mock_session.rb:30:in `request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:244:in `process_request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:58:in `get'
+     # ./spec/dynamic_routes_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: expect(last_response.status).to be(200)
+       
+       expected #<Fixnum:401> => 200
+            got #<Fixnum:809> => 404
+       
+       Compared using equal?, which compares object identity,
+       but expected and actual are not the same object. Use
+       `expect(actual).to eq(expected)` if you don't care about
+       object identity in this example.
+     # ./spec/dynamic_routes_spec.rb:19:in `block (3 levels) in <top (required)>'
+
+  3) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: expect(last_response.body).to include("Item not found")
+       expected "Figs - 3.42\nPears - 0.99\nRoute not found" to include "Item not found"
+       Diff:
+       @@ -1,2 +1,4 @@
+       -Item not found
+       +Figs - 3.42
+       +Pears - 0.99
+       +Route not found
+     # ./spec/dynamic_routes_spec.rb:25:in `block (3 levels) in <top (required)>'
+
+Finished in 0.02496 seconds (files took 0.08987 seconds to load)
+3 examples, 3 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:8 # Shopping Cart Rack App Returns 404 for a bad route
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[06:05:45] (master) rack-dynamic-routes-lab-v-000
+// ♥ rspec
+.FF
+
+Failures:
+
+  1) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: expect(last_response.body).to include("3.42")
+       expected "Route not found" to include "3.42"
+     # ./spec/dynamic_routes_spec.rb:18:in `block (3 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: expect(last_response.body).to include("Item not found")
+       expected "Route not found" to include "Item not found"
+     # ./spec/dynamic_routes_spec.rb:25:in `block (3 levels) in <top (required)>'
+
+Finished in 0.02669 seconds (files took 0.09351 seconds to load)
+3 examples, 2 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[06:06:02] (master) rack-dynamic-routes-lab-v-000
+// ♥ rspec
+FFF
+
+Failures:
+
+  1) Shopping Cart Rack App Returns 404 for a bad route
+     Failure/Error: expect(last_response.body).to include("Route not found")
+       expected "" to include "Route not found"
+     # ./spec/dynamic_routes_spec.rb:10:in `block (2 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: expect(last_response.body).to include("3.42")
+       expected "" to include "3.42"
+     # ./spec/dynamic_routes_spec.rb:18:in `block (3 levels) in <top (required)>'
+
+  3) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: expect(last_response.body).to include("Item not found")
+       expected "" to include "Item not found"
+     # ./spec/dynamic_routes_spec.rb:25:in `block (3 levels) in <top (required)>'
+
+Finished in 0.02431 seconds (files took 0.08814 seconds to load)
+3 examples, 3 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:8 # Shopping Cart Rack App Returns 404 for a bad route
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[06:06:29] (master) rack-dynamic-routes-lab-v-000
+// ♥ rspec
+.FF
+
+Failures:
+
+  1) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: expect(last_response.body).to include("3.42")
+       expected "Route not found" to include "3.42"
+     # ./spec/dynamic_routes_spec.rb:18:in `block (3 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: expect(last_response.body).to include("Item not found")
+       expected "Route not found" to include "Item not found"
+     # ./spec/dynamic_routes_spec.rb:25:in `block (3 levels) in <top (required)>'
+
+Finished in 0.02435 seconds (files took 0.09039 seconds to load)
+3 examples, 2 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[06:06:49] (master) rack-dynamic-routes-lab-v-000
+// ♥ rspec
+/Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/config/environment.rb:5:in `require_relative': /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/app/application.rb:20: syntax error, unexpected end-of-input, expecting keyword_end (SyntaxError)
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/config/environment.rb:5:in `<top (required)>'
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/spec/spec_helper.rb:1:in `require_relative'
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/spec/spec_helper.rb:1:in `<top (required)>'
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/spec/dynamic_routes_spec.rb:1:in `require_relative'
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/spec/dynamic_routes_spec.rb:1:in `<top (required)>'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/configuration.rb:1327:in `load'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/configuration.rb:1327:in `block in load_spec_files'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/configuration.rb:1325:in `each'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/configuration.rb:1325:in `load_spec_files'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/runner.rb:102:in `setup'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/runner.rb:88:in `run'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/runner.rb:73:in `run'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/runner.rb:41:in `invoke'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/exe/rspec:4:in `<top (required)>'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/bin/rspec:23:in `load'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/bin/rspec:23:in `<main>'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/bin/ruby_executable_hooks:15:in `<main>'
+[06:10:06] (master) rack-dynamic-routes-lab-v-000
+// ♥ learn
+/Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/config/environment.rb:5:in `require_relative': /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/app/application.rb:20: syntax error, unexpected end-of-input, expecting keyword_end (SyntaxError)
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/config/environment.rb:5:in `<top (required)>'
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/spec/spec_helper.rb:1:in `require_relative'
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/spec/spec_helper.rb:1:in `<top (required)>'
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/spec/dynamic_routes_spec.rb:1:in `require_relative'
+	from /Users/brandondecarlo/Development/code/rack-dynamic-routes-lab-v-000/spec/dynamic_routes_spec.rb:1:in `<top (required)>'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/configuration.rb:1327:in `load'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/configuration.rb:1327:in `block in load_spec_files'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/configuration.rb:1325:in `each'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/configuration.rb:1325:in `load_spec_files'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/runner.rb:102:in `setup'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/runner.rb:88:in `run'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/runner.rb:73:in `run'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/lib/rspec/core/runner.rb:41:in `invoke'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rspec-core-3.3.2/exe/rspec:4:in `<top (required)>'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/bin/rspec:23:in `load'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/bin/rspec:23:in `<main>'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/bin/ruby_executable_hooks:15:in `<main>'
+[06:10:19] (master) rack-dynamic-routes-lab-v-000
+// ♥ learn
+
+Shopping Cart Rack App
+  Returns 404 for a bad route
+  /items
+    Returns item price if it is in @@item
+    Returns an error and 400 if the item is not there
+
+Finished in 0.01308 seconds (files took 0.09332 seconds to load)
+3 examples, 0 failures
+
+[06:11:09] (master) rack-dynamic-routes-lab-v-000
+// ♥ learn
+
+Shopping Cart Rack App
+  Returns 404 for a bad route
+  /items
+    Returns item price if it is in @@item (FAILED - 1)
+    Returns an error and 400 if the item is not there
+
+Failures:
+
+  1) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: expect(last_response.body).to include("3.42")
+       expected "Item not found" to include "3.42"
+     # ./spec/dynamic_routes_spec.rb:18:in `block (3 levels) in <top (required)>'
+
+Finished in 0.02461 seconds (files took 0.09244 seconds to load)
+3 examples, 1 failure
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+
+[06:13:25] (master) rack-dynamic-routes-lab-v-000
+// ♥ learn
+
+Shopping Cart Rack App
+  Returns 404 for a bad route (FAILED - 1)
+  /items
+    Returns item price if it is in @@item (FAILED - 2)
+    Returns an error and 400 if the item is not there (FAILED - 3)
+
+Failures:
+
+  1) Shopping Cart Rack App Returns 404 for a bad route
+     Failure/Error: get '/testing'
+     NoMethodError:
+       undefined method `last' for /items/:Regexp
+     # ./app/application.rb:8:in `call'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/mock_session.rb:30:in `request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:244:in `process_request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:58:in `get'
+     # ./spec/dynamic_routes_spec.rb:9:in `block (2 levels) in <top (required)>'
+
+  2) Shopping Cart Rack App /items Returns item price if it is in @@item
+     Failure/Error: get '/items/Figs'
+     NoMethodError:
+       undefined method `last' for /items/:Regexp
+     # ./app/application.rb:8:in `call'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/mock_session.rb:30:in `request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:244:in `process_request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:58:in `get'
+     # ./spec/dynamic_routes_spec.rb:17:in `block (3 levels) in <top (required)>'
+
+  3) Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+     Failure/Error: get '/items/Apples'
+     NoMethodError:
+       undefined method `last' for /items/:Regexp
+     # ./app/application.rb:8:in `call'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/mock_session.rb:30:in `request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:244:in `process_request'
+     # /Users/brandondecarlo/.rvm/gems/ruby-2.2.3/gems/rack-test-0.6.3/lib/rack/test.rb:58:in `get'
+     # ./spec/dynamic_routes_spec.rb:24:in `block (3 levels) in <top (required)>'
+
+Finished in 0.01295 seconds (files took 0.1036 seconds to load)
+3 examples, 3 failures
+
+Failed examples:
+
+rspec ./spec/dynamic_routes_spec.rb:8 # Shopping Cart Rack App Returns 404 for a bad route
+rspec ./spec/dynamic_routes_spec.rb:15 # Shopping Cart Rack App /items Returns item price if it is in @@item
+rspec ./spec/dynamic_routes_spec.rb:22 # Shopping Cart Rack App /items Returns an error and 400 if the item is not there
+
+[06:15:22] (master) rack-dynamic-routes-lab-v-000
+// ♥ learn
+
+Shopping Cart Rack App
+  Returns 404 for a bad route
+  /items
+    Returns item price if it is in @@item
+    Returns an error and 400 if the item is not there
+
+Finished in 0.01341 seconds (files took 0.09442 seconds to load)
+3 examples, 0 failures
+
+[06:15:53] (master) rack-dynamic-routes-lab-v-000
+// ♥ 
