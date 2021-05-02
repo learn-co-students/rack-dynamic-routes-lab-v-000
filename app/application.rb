@@ -13,9 +13,14 @@ class Application
     elsif req.path.match(/items/)
       @@item.each do |item|
         resp.write "#{item}\n"
-      end 
+      end
+    # else
+    #   search_term = req.params["item"]
+    #   @@items.!inlcude?(item)
+    #     resp.write "Item not found"
+    #     resp.status = 404
+       
     end
-
     resp.finish
 
   end
