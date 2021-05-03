@@ -1,3 +1,5 @@
+require 'pry'
+
 class Application
 
   @@item = ["3.42"]
@@ -6,17 +8,19 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
-    if req.path.match(/testing/)
+    # if req.path.match(/testing/)
     # if req.path=="/testing"
+    if req.path.match(/items/)   
+        binding.pry  
       resp.write "Route not found"
       resp.status = 404
-    elsif req.path.match(/items/)
       @@item.each do |item|
         resp.write "#{item}\n"
       end
-    elsif !@@item.include?(@@item.last)
-    resp.write "Item not found"
-    resp.status = 400
+    else 
+    # !@@item.include?(@@item.last)
+    # resp.write "Item not found"
+    resp.status = 404
     end
     resp.finish
   end
