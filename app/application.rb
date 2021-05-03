@@ -2,7 +2,7 @@ require 'pry'
 
 class Application
 
-  @@item = ["3.42"]
+  @@items = [Item.new("Figs",3.42),Item.new("Pears",0.99)]
 
   def call(env)
     resp = Rack::Response.new
@@ -10,16 +10,22 @@ class Application
 
     # if req.path.match(/testing/)
     # if req.path=="/testing"
-    if req.path.match(/items/)   
-        binding.pry  
-      resp.write "Route not found"
-      resp.status = 404
-      @@item.each do |item|
-        resp.write "#{item}\n"
-      end
+
+    if req.path.match(/items/) 
+      item_name = req.path.split("/items/").last
+      found_item = @@items.find do |item|
+         item.name == item_name
+        end
+        if found_item
+          resp.write found_item.price
+        else
+          resp.write "Item not found"
+          resp.status  = 400
+        end
+        # binding.pry  
     else 
     # !@@item.include?(@@item.last)
-    # resp.write "Item not found"
+    resp.write "Route not found"
     resp.status = 404
     end
     resp.finish
