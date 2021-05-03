@@ -1,7 +1,6 @@
 class Application
 
-    @@item = ["3.42"]
-    # @@item = []
+  @@item = ["3.42"]
 
   def call(env)
     resp = Rack::Response.new
@@ -19,9 +18,7 @@ class Application
     resp.write "Item not found"
     resp.status = 404
     end
-    # binding.pry
     resp.finish
-
   end
 end
 
