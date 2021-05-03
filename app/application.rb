@@ -15,12 +15,36 @@ class Application
       @@item.each do |item|
         resp.write "#{item}\n"
       end
-    else
-        !@@item.include?(Item.new.price)
-        resp.write "Item not found"
-        resp.status = 404
+    elsif !@@item.include?(@@item.last)
+    resp.write "Item not found"
+    resp.status = 404
     end
+    # binding.pry
     resp.finish
 
   end
 end
+
+# elsif req.path.match(/items/)
+#     search_term = req.params["item"]
+#      if @@item.include?(search_term)
+#        @@item.each do |item|
+#          resp.write "#{item}\n"
+#          end
+#       else
+#   # elsif @@item.include?(@@item.last)
+#         resp.write "Item not found"
+#         resp.status = 404
+#       end
+#   end
+
+# elsif req.path.match(/items/)
+    #   if @@item.include?(@@item.last)
+    #     @@item.each do |item|
+    #       resp.write "#{item}\n"
+    #     end
+    #   else 
+    #     # !@@item.include?(@@item.last)
+    #     resp.write "Item not found"
+    #     resp.status = 404
+    #   end
